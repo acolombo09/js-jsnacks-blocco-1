@@ -6,43 +6,39 @@ e da queste vuole generare una falsa lista di invitati con nome e cognome.
 -----------------------------------------------------------------------------
 */
 
-// setto la lista mail con accesso e testo l'array.
-const mailList = ["miamail@gmail.com", "suamail@gmail.com", "nostramail@gmail.com", "vostramaik@gmail.com"];
-// console.log(mailList);
-// console.log(mailList[0]);
-// console.log(mailList[1]);
-// console.log(mailList[2]);
+// creo la lista dei nomi con l'array.
+const namesList = ["Andrea", "Andrew", "Andy", "André", "Andreas"];
 
-// chiedo all'utente la sua mail.
-const btnLogin = document.querySelector(".request");
-const emailInputElement = document.querySelector("[name='email']");
-let emailCheck = false;
+// creo la lista dei cognomi con l'array.
+const surnamesList = ["Colombo", "Colombs", "Hawk", "Colombeur", "Muller"];
 
-btnLogin.addEventListener("click", function() {
-  if (emailInputElement) {
-    const email = emailInputElement.value;
-    console.log(email);
-  } else {
-    console.log("Impossibile trovare l'elemento con il selettore '[name=mail]'");
-  }
+// creo un array test per i nomi 
+for (let i = 0; i < namesList.length; i++) {
+  let randomNameIndex = Math.floor(Math.random() * namesList.length);
+  let randomName = namesList[randomNameIndex];
+  console.log(randomName);
+};
 
-    // controllo e confronto se la mail dell'utente è presente nella lista.
-    const email = emailInputElement.value;
+// creo un array test per i cognomi
+for (let i = 0; i < surnamesList.length; i++) {
+  let randomSurnameIndex = Math.floor(Math.random() * surnamesList.length);
+  let randomSurname = surnamesList[randomSurnameIndex];
+  console.log(randomSurname);
+};
 
-    for (let i = 0; i < mailList.length; i++) {
-    /*creo una variabile che di base è false e diventa true se la mail
-      inserita corrisponde ad una delle mail in elenco
-    */
-    
-    if (email === mailList[i]) {
-      emailCheck = true;
-    }
-  }
-    // stampo alert in base all'esito del controllo.
-    if (emailCheck === true) {
-    alert("Accesso consentito, benvenuto.");
-  }
-    else {
-    alert("Accesso non consentito.");
-  }
-});
+// VERSIONE finale
+/* Non c'è bisogno di farne due separati in quanto ho presupposto che
+  le lunghezze delle liste sono per forza uguali in quanto sto cercando
+  nomi E cognomi.
+*/
+for (let i = 0; i < namesList.length; i++) {
+  let randomNameIndex = Math.floor(Math.random() * namesList.length);
+  let randomName = namesList[randomNameIndex];
+  
+  let randomSurnameIndex = Math.floor(Math.random() * surnamesList.length);
+  let randomSurname = surnamesList[randomSurnameIndex];
+  
+  console.log(randomName + " " + randomSurname);
+}
+
+// Ad oggi non saprei come dire all'array come evitare gli eventuali doppioni.
