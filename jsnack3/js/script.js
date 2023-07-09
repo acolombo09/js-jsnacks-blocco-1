@@ -3,43 +3,51 @@ Snack3 (Bonus)
 Crea due array che hanno un numero di elementi diversi. Aggiungi elementi all’array che ha meno elementi fino a quando ne avrà tanti quanti l’altro.
 */
 
-// setto la lista mail con accesso e testo l'array.
-const mailList = ["miamail@gmail.com", "suamail@gmail.com", "nostramail@gmail.com", "vostramaik@gmail.com"];
-// console.log(mailList);
-// console.log(mailList[0]);
-// console.log(mailList[1]);
-// console.log(mailList[2]);
+// Creo due array che hanno un numero di elementi diversi.
 
-// chiedo all'utente la sua mail.
-const btnLogin = document.querySelector(".request");
-const emailInputElement = document.querySelector("[name='email']");
-let emailCheck = false;
+const lista1 = [];
+const lista2 = [];
 
-btnLogin.addEventListener("click", function() {
-  if (emailInputElement) {
-    const email = emailInputElement.value;
-    console.log(email);
+for(let i = 0; i < 10; i++){
+  // voglio creare una lista di numeri col push.
+  //in questo caso da 0 a 99 (floor).
+  // potrei anche fare da 1 a 100 con ceil.
+  lista1.push(Math.floor(Math.random() * 100));
+  // console.log(lista1);
+}
+
+for(let i = 0; i < 23; i++){
+  // voglio creare una lista di numeri col push.
+  //in questo caso da 0 a 99 (floor).
+  // potrei anche fare da 1 a 100 con ceil.
+  lista2.push(Math.floor(Math.random() * 100));
+  // console.log(lista2);
+}
+
+// voglio capire quale delle lue liste è la più lunga.
+const differenzaListe = lista1.length - lista2.length;
+// console.log(differenzaListe);
+
+/* dato che il risultato è negativo (-13), deduco che 
+  la prima lista è minore della seconda (lo so già)
+
+  Dopodichè aggiungo elementi all'array (lista) più corto
+  fino a quando ne avrà tanti quanti l'altro.
+*/
+
+/* siccome la differenzaListe è un numero negativo e non potrei
+  fare cicli in negativo, con suggerimento di Florian, utilizzo la funzione math.abs
+  per trasformare tutti i numeri negativi in positivi (valore assoluto).
+*/
+
+for (let i = 0; i < Math.abs(differenzaListe); i++) {
+  if (differenzaListe < 0) {
+    lista1.push(20);
   } else {
-    console.log("Impossibile trovare l'elemento con il selettore '[name=mail]'");
+    lista2.push(20);
   }
+}
 
-    // controllo e confronto se la mail dell'utente è presente nella lista.
-    const email = emailInputElement.value;
+console.log(lista1);
 
-    for (let i = 0; i < mailList.length; i++) {
-    /*creo una variabile che di base è false e diventa true se la mail
-      inserita corrisponde ad una delle mail in elenco
-    */
-    
-    if (email === mailList[i]) {
-      emailCheck = true;
-    }
-  }
-    // stampo alert in base all'esito del controllo.
-    if (emailCheck === true) {
-    alert("Accesso consentito, benvenuto.");
-  }
-    else {
-    alert("Accesso non consentito.");
-  }
-});
+console.log(lista2);
